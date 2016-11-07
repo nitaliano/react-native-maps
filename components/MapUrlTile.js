@@ -13,8 +13,8 @@ const propTypes = {
   ...View.propTypes,
 
   /**
-   * The url template of the tile server. The patterns {x} {y} {z} will be replaced at runtime
-   * For example, http://c.tile.openstreetmap.org/{z}/{x}/{y}.png
+   * The url template of the tile server. The patterns {s} {x} {y} {z} will be replaced at runtime
+   * For example, http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
    */
   urlTemplate: PropTypes.string.isRequired,
 
@@ -26,6 +26,12 @@ const propTypes = {
    * @platform android
    */
   zIndex: PropTypes.number,
+
+  /**
+   * The subdomains to be used as {s} in urlTemplate
+   *
+   */
+  subdomains: PropTypes.array,
 };
 
 class MapUrlTile extends React.Component {

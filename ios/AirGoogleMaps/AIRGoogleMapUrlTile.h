@@ -10,6 +10,7 @@
 
 @property (nonatomic, strong) GMSURLTileLayer *tileLayer;
 @property (nonatomic, assign) NSString *urlTemplate;
+@property (nonatomic, strong) NSArray *subdomains;
 @property (nonatomic, assign) int zIndex;
 
 @end

@@ -9,20 +9,25 @@ import com.google.android.gms.maps.model.UrlTileProvider;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class AirMapUrlTile extends AirMapFeature {
 
     class AIRMapUrlTileProvider extends UrlTileProvider
     {
         private String urlTemplate;
-        public AIRMapUrlTileProvider(int width, int height, String urlTemplate) {
+        private List<String> subdomains;
+
+        public AIRMapUrlTileProvider(int width, int height, String urlTemplate, List<String> subdomains) {
             super(width, height);
             this.urlTemplate = urlTemplate;
+            this.subdomains = subdomains;
         }
         @Override
         public synchronized URL getTileUrl(int x, int y, int zoom) {
 
             String s = this.urlTemplate
+              .replace("{s}", getSubdomain(x, y))
               .replace("{x}", Integer.toString(x))
               .replace("{y}", Integer.toString(y))
               .replace("{z}", Integer.toString(zoom));
@@ -38,12 +43,21 @@ public class AirMapUrlTile extends AirMapFeature {
         public void setUrlTemplate(String urlTemplate) {
             this.urlTemplate = urlTemplate;
         }
+
+        private String getSubdomain(int x, int y) {
+            if (subdomains == null || subdomains.size() == 0) {
+              return "";
+            }
+            int subdomainIndex = Math.abs(x + y) % subdomains.size();
+            return subdomains.get(subdomainIndex);
+        }
     }
 
     private TileOverlayOptions tileOverlayOptions;
     private TileOverlay tileOverlay;
     private AIRMapUrlTileProvider tileProvider;
 
+    private List<String> subdomains;
     private String urlTemplate;
     private float zIndex;
 
@@ -68,6 +82,10 @@ public class AirMapUrlTile extends AirMapFeature {
         }
     }
 
+    public void setSubdomains(List<String> subdomains) {
+        this.subdomains = subdomains;
+    }
+
     public TileOverlayOptions getTileOverlayOptions() {
         if (tileOverlayOptions == null) {
             tileOverlayOptions = createTileOverlayOptions();
@@ -78,7 +96,7 @@ public class AirMapUrlTile extends AirMapFeature {
     private TileOverlayOptions createTileOverlayOptions() {
         TileOverlayOptions options = new TileOverlayOptions();
         options.zIndex(zIndex);
-        this.tileProvider = new AIRMapUrlTileProvider(256, 256, this.urlTemplate);
+        this.tileProvider = new AIRMapUrlTileProvider(256, 256, this.urlTemplate, subdomains);
         options.tileProvider(this.tileProvider);
         return options;
     }

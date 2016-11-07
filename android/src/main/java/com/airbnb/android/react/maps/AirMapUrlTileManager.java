@@ -6,9 +6,13 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AirMapUrlTileManager extends ViewGroupManager<AirMapUrlTile> {
     private DisplayMetrics metrics;
@@ -45,4 +49,14 @@ public class AirMapUrlTileManager extends ViewGroupManager<AirMapUrlTile> {
         view.setZIndex(zIndex);
     }
 
+    @ReactProp(name = "subdomains")
+    public void setSubdomains(AirMapUrlTile view, ReadableArray subdomains) {
+        List<String> subdomainsList = new ArrayList<>();
+
+        for (int i = 0; i < subdomains.size(); i++) {
+          subdomainsList.add(subdomains.getString(i));
+        }
+
+        view.setSubdomains(subdomainsList);
+    }
 }

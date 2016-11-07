@@ -8,6 +8,7 @@
 
 #import "AIRMapUrlTile.h"
 #import "UIView+React.h"
+#import "AirTile.h"
 
 @implementation AIRMapUrlTile {
     BOOL _urlTemplateSet;
@@ -24,8 +25,10 @@
 - (void) createTileOverlayAndRendererIfPossible
 {
     if (!_urlTemplateSet) return;
-    self.tileOverlay = [[MKTileOverlay alloc] initWithURLTemplate:self.urlTemplate];
+    self.tileOverlay = [[AirTile alloc] init];
+    self.tileOverlay.urlTemplate = self.urlTemplate;
     self.tileOverlay.canReplaceMapContent = YES;
+    self.tileOverlay.subdomains = self.subdomains;
     self.renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:self.tileOverlay];
 }
 

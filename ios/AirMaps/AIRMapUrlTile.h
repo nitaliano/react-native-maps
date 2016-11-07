@@ -14,14 +14,16 @@
 #import "RCTComponent.h"
 #import "AIRMapCoordinate.h"
 #import "AIRMap.h"
+#import "AirTile.h"
 #import "RCTView.h"
 
 @interface AIRMapUrlTile : MKAnnotationView <MKOverlay>
 
 @property (nonatomic, weak) AIRMap *map;
 
-@property (nonatomic, strong) MKTileOverlay *tileOverlay;
+@property (nonatomic, strong) AirTile *tileOverlay;
 @property (nonatomic, strong) MKTileOverlayRenderer *renderer;
+@property (nonatomic, strong) NSArray *subdomains;
 
 @property (nonatomic, copy) NSString *urlTemplate;
 

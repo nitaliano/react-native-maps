@@ -46,11 +46,11 @@
 		8620CC911DBD814A00B79BFE /* AIRGoogleMapPolylineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8620CC821DBD814A00B79BFE /* AIRGoogleMapPolylineManager.m */; };
 		8620CC921DBD814A00B79BFE /* DummyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8620CC841DBD814A00B79BFE /* DummyView.m */; };
 		8620CC931DBD814A00B79BFE /* RCTConvert+GMSMapViewType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8620CC861DBD814A00B79BFE /* RCTConvert+GMSMapViewType.m */; };
+		862638EC1DD01D5A00338E1E /* AirTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 862638EB1DD01D5A00338E1E /* AirTile.m */; };
 		8697D6221DBEDE6100DB7D0F /* AIRGoogleMapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697D6211DBEDE6100DB7D0F /* AIRGoogleMapCircle.m */; };
 		8697D6251DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697D6241DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.m */; };
 		86DE6F881DCE7D21002A5053 /* AIRGoogleMapUrlTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DE6F871DCE7D21002A5053 /* AIRGoogleMapUrlTile.m */; };
 		86DE6F8B1DCE8543002A5053 /* AIRGoogleMapURLTileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DE6F8A1DCE8543002A5053 /* AIRGoogleMapURLTileManager.m */; };
-		C9315A21AD5A149EB5B40F29 /* Pods_AirMapsExplorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EB66BA0860A4DCD4CA3D77 /* Pods_AirMapsExplorer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +116,7 @@
 		21E6570B1D77591A00B75EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		21E6570D1D77591F00B75EE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		21E6570F1D77594C00B75EE5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		34EE2556222550B79D5A4ECD /* Pods-AirMapsExplorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapsExplorer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapsExplorer/Pods-AirMapsExplorer.debug.xcconfig"; sourceTree = "<group>"; };
 		3591658C00398534590C8751 /* Pods_AirMapsExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirMapsExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8620CC6D1DBD814A00B79BFE /* AIRGMSMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGMSMarker.h; sourceTree = "<group>"; };
 		8620CC6E1DBD814A00B79BFE /* AIRGMSMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGMSMarker.m; sourceTree = "<group>"; };
@@ -143,16 +144,17 @@
 		8620CC841DBD814A00B79BFE /* DummyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyView.m; sourceTree = "<group>"; };
 		8620CC851DBD814A00B79BFE /* RCTConvert+GMSMapViewType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+GMSMapViewType.h"; sourceTree = "<group>"; };
 		8620CC861DBD814A00B79BFE /* RCTConvert+GMSMapViewType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+GMSMapViewType.m"; sourceTree = "<group>"; };
+		862638EA1DD01D5A00338E1E /* AirTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirTile.h; sourceTree = "<group>"; };
+		862638EB1DD01D5A00338E1E /* AirTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirTile.m; sourceTree = "<group>"; };
 		8697D6201DBEDE6100DB7D0F /* AIRGoogleMapCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapCircle.h; sourceTree = "<group>"; };
 		8697D6211DBEDE6100DB7D0F /* AIRGoogleMapCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGoogleMapCircle.m; sourceTree = "<group>"; };
 		8697D6231DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapCircleManager.h; sourceTree = "<group>"; };
 		8697D6241DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGoogleMapCircleManager.m; sourceTree = "<group>"; };
-		E138AD0CDB08FE57B09B18F8 /* Pods-AirMapsExplorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapsExplorer.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapsExplorer/Pods-AirMapsExplorer.release.xcconfig"; sourceTree = "<group>"; };
-		86C3F1E16CFF1D84E5317F85 /* Pods-AirMapsExplorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapsExplorer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapsExplorer/Pods-AirMapsExplorer.debug.xcconfig"; sourceTree = "<group>"; };
 		86DE6F861DCE7D21002A5053 /* AIRGoogleMapUrlTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapUrlTile.h; sourceTree = "<group>"; };
 		86DE6F871DCE7D21002A5053 /* AIRGoogleMapUrlTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGoogleMapUrlTile.m; sourceTree = "<group>"; };
 		86DE6F891DCE8543002A5053 /* AIRGoogleMapUrlTileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapUrlTileManager.h; sourceTree = "<group>"; };
 		86DE6F8A1DCE8543002A5053 /* AIRGoogleMapURLTileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGoogleMapURLTileManager.m; sourceTree = "<group>"; };
+		E138AD0CDB08FE57B09B18F8 /* Pods-AirMapsExplorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapsExplorer.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapsExplorer/Pods-AirMapsExplorer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,8 @@
 				2166AB151D82EC56007538D7 /* Callout */,
 				2166AB271D82EC56007538D7 /* RCTConvert+MoreMapKit.h */,
 				2166AB281D82EC56007538D7 /* RCTConvert+MoreMapKit.m */,
+				862638EA1DD01D5A00338E1E /* AirTile.h */,
+				862638EB1DD01D5A00338E1E /* AirTile.m */,
 			);
 			name = AirMaps;
 			path = ../../ios/AirMaps;
@@ -335,8 +339,8 @@
 		C2ED0F349F22CC794F9BC33F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BE5DE1E9AE25978F88CD940A /* Pods-AirMapsExplorer.debug.xcconfig */,
 				E138AD0CDB08FE57B09B18F8 /* Pods-AirMapsExplorer.release.xcconfig */,
+				34EE2556222550B79D5A4ECD /* Pods-AirMapsExplorer.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -517,6 +521,7 @@
 				21D346651D933B8C002BAD8A /* AIRMapUrlTile.m in Sources */,
 				2166AB2A1D82EC56007538D7 /* AIRMapCallout.m in Sources */,
 				8620CC8E1DBD814A00B79BFE /* AIRGoogleMapPolygon.m in Sources */,
+				862638EC1DD01D5A00338E1E /* AirTile.m in Sources */,
 				8620CC8C1DBD814A00B79BFE /* AIRGoogleMapMarker.m in Sources */,
 				8620CC8F1DBD814A00B79BFE /* AIRGoogleMapPolygonManager.m in Sources */,
 				8620CC8A1DBD814A00B79BFE /* AIRGoogleMapCalloutManager.m in Sources */,
@@ -615,7 +620,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE5DE1E9AE25978F88CD940A /* Pods-AirMapsExplorer.debug.xcconfig */;
+			baseConfigurationReference = 34EE2556222550B79D5A4ECD /* Pods-AirMapsExplorer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEAD_CODE_STRIPPING = NO;
