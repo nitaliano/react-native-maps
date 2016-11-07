@@ -42,6 +42,13 @@ RCT_EXPORT_MODULE()
 {
   AIRGoogleMap *map = [AIRGoogleMap new];
   map.delegate = self;
+  map.settings.consumesGesturesInView = NO;
+  
+  UIPanGestureRecognizer *drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleMapDrag:)];
+  [drag setMinimumNumberOfTouches:1];
+  [drag setMaximumNumberOfTouches:1];
+  [map addGestureRecognizer:drag];
+  
   return map;
 }
 
@@ -58,6 +65,7 @@ RCT_EXPORT_VIEW_PROPERTY(pitchEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(showsUserLocation, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onLongPress, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPanDrag, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onMarkerPress, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onRegionChange, RCTDirectEventBlock)
@@ -232,4 +240,26 @@ RCT_EXPORT_METHOD(takeSnapshot:(nonnull NSNumber *)reactTag
   AIRGMSMarker *aMarker = (AIRGMSMarker *)marker;
   [aMarker.fakeMarker didDragMarker:aMarker];
 }
+
+#pragma mark Gesture Recognizer Handlers
+
+- (void)handleMapDrag:(UIPanGestureRecognizer*)recognizer {
+  AIRGoogleMap *map = (AIRGoogleMap *)recognizer.view;
+  if (!map.onPanDrag) return;
+  
+  CGPoint touchPoint = [recognizer locationInView:map];
+  CLLocationCoordinate2D coord = [map.projection coordinateForPoint:touchPoint];
+  map.onPanDrag(@{
+                  @"coordinate": @{
+                      @"latitude": @(coord.latitude),
+                      @"longitude": @(coord.longitude),
+                      },
+                  @"position": @{
+                      @"x": @(touchPoint.x),
+                      @"y": @(touchPoint.y),
+                      },
+                  });
+  
+}
+
 @end
