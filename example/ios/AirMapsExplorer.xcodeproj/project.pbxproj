@@ -49,6 +49,8 @@
 		862638EC1DD01D5A00338E1E /* AirTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 862638EB1DD01D5A00338E1E /* AirTile.m */; };
 		8697D6221DBEDE6100DB7D0F /* AIRGoogleMapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697D6211DBEDE6100DB7D0F /* AIRGoogleMapCircle.m */; };
 		8697D6251DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697D6241DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.m */; };
+		8697D8361DDE88FE0013F68C /* AIRGMSPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697D8351DDE88FE0013F68C /* AIRGMSPolygon.m */; };
+		8697D8391DDECB250013F68C /* AIRGMSPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697D8381DDECB250013F68C /* AIRGMSPolyline.m */; };
 		86DE6F881DCE7D21002A5053 /* AIRGoogleMapUrlTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DE6F871DCE7D21002A5053 /* AIRGoogleMapUrlTile.m */; };
 		86DE6F8B1DCE8543002A5053 /* AIRGoogleMapURLTileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DE6F8A1DCE8543002A5053 /* AIRGoogleMapURLTileManager.m */; };
 /* End PBXBuildFile section */
@@ -150,6 +152,10 @@
 		8697D6211DBEDE6100DB7D0F /* AIRGoogleMapCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGoogleMapCircle.m; sourceTree = "<group>"; };
 		8697D6231DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapCircleManager.h; sourceTree = "<group>"; };
 		8697D6241DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGoogleMapCircleManager.m; sourceTree = "<group>"; };
+		8697D8341DDE88FE0013F68C /* AIRGMSPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGMSPolygon.h; sourceTree = "<group>"; };
+		8697D8351DDE88FE0013F68C /* AIRGMSPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGMSPolygon.m; sourceTree = "<group>"; };
+		8697D8371DDECB250013F68C /* AIRGMSPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGMSPolyline.h; sourceTree = "<group>"; };
+		8697D8381DDECB250013F68C /* AIRGMSPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGMSPolyline.m; sourceTree = "<group>"; };
 		86DE6F861DCE7D21002A5053 /* AIRGoogleMapUrlTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapUrlTile.h; sourceTree = "<group>"; };
 		86DE6F871DCE7D21002A5053 /* AIRGoogleMapUrlTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGoogleMapUrlTile.m; sourceTree = "<group>"; };
 		86DE6F891DCE8543002A5053 /* AIRGoogleMapUrlTileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGoogleMapUrlTileManager.h; sourceTree = "<group>"; };
@@ -331,6 +337,10 @@
 				86DE6F871DCE7D21002A5053 /* AIRGoogleMapUrlTile.m */,
 				86DE6F891DCE8543002A5053 /* AIRGoogleMapUrlTileManager.h */,
 				86DE6F8A1DCE8543002A5053 /* AIRGoogleMapURLTileManager.m */,
+				8697D8341DDE88FE0013F68C /* AIRGMSPolygon.h */,
+				8697D8351DDE88FE0013F68C /* AIRGMSPolygon.m */,
+				8697D8371DDECB250013F68C /* AIRGMSPolyline.h */,
+				8697D8381DDECB250013F68C /* AIRGMSPolyline.m */,
 			);
 			name = AirGoogleMaps;
 			path = ../../ios/AirGoogleMaps;
@@ -399,6 +409,9 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -522,6 +535,7 @@
 				2166AB2A1D82EC56007538D7 /* AIRMapCallout.m in Sources */,
 				8620CC8E1DBD814A00B79BFE /* AIRGoogleMapPolygon.m in Sources */,
 				862638EC1DD01D5A00338E1E /* AirTile.m in Sources */,
+				8697D8391DDECB250013F68C /* AIRGMSPolyline.m in Sources */,
 				8620CC8C1DBD814A00B79BFE /* AIRGoogleMapMarker.m in Sources */,
 				8620CC8F1DBD814A00B79BFE /* AIRGoogleMapPolygonManager.m in Sources */,
 				8620CC8A1DBD814A00B79BFE /* AIRGoogleMapCalloutManager.m in Sources */,
@@ -547,6 +561,7 @@
 				2166AB351D82EC56007538D7 /* AIRMapPolylineManager.m in Sources */,
 				8620CC911DBD814A00B79BFE /* AIRGoogleMapPolylineManager.m in Sources */,
 				2166AB291D82EC56007538D7 /* AIRMap.m in Sources */,
+				8697D8361DDE88FE0013F68C /* AIRGMSPolygon.m in Sources */,
 				2166AB2E1D82EC56007538D7 /* AIRMapCoordinate.m in Sources */,
 				2166AB341D82EC56007538D7 /* AIRMapPolyline.m in Sources */,
 				2166AB2F1D82EC56007538D7 /* AIRMapManager.m in Sources */,
@@ -581,6 +596,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -604,6 +620,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -623,7 +640,9 @@
 			baseConfigurationReference = 34EE2556222550B79D5A4ECD /* Pods-AirMapsExplorer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -636,7 +655,7 @@
 				);
 				INFOPLIST_FILE = AirMapsExplorer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.--PRODUCT-NAME-rfc1034identifier-";
 				PRODUCT_NAME = AirMapsExplorer;
 			};
 			name = Debug;
@@ -646,6 +665,8 @@
 			baseConfigurationReference = E138AD0CDB08FE57B09B18F8 /* Pods-AirMapsExplorer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -658,7 +679,7 @@
 				);
 				INFOPLIST_FILE = AirMapsExplorer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.--PRODUCT-NAME-rfc1034identifier-";
 				PRODUCT_NAME = AirMapsExplorer;
 			};
 			name = Release;

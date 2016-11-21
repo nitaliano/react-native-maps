@@ -29,6 +29,7 @@ CGRect unionRect(CGRect a, CGRect b) {
   RCTImageLoaderCancellationBlock _reloadImageCancellationBlock;
   __weak UIImageView *_iconImageView;
   UIView *_iconView;
+  NSDate *_lastTap;
 }
 
 - (instancetype)init
@@ -226,8 +227,9 @@ CGRect unionRect(CGRect a, CGRect b) {
                                                                    CGRect bounds = CGRectMake(0, 0, w, h);
 
                                                                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                                                                   imageView.userInteractionEnabled = YES;
                                                                    [imageView setFrame:bounds];
-
+                                                                  
                                                                    // NOTE: sizeToFit doesn't work instead. Not sure why.
                                                                    // TODO: Doing it this way is not ideal because it causes things to reshuffle
                                                                    //       when the image loads IF the image is larger than the UIView.

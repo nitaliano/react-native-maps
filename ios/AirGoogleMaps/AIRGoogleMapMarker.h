@@ -14,6 +14,7 @@
 @interface AIRGoogleMapMarker : UIView
 
 @property (nonatomic, weak) RCTBridge *bridge;
+@property (nonatomic, strong) UIView *container;
 @property (nonatomic, strong) AIRGoogleMapCallout *calloutView;
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
@@ -38,4 +39,5 @@
 - (void)didBeginDraggingMarker:(AIRGMSMarker *)marker;
 - (void)didEndDraggingMarker:(AIRGMSMarker *)marker;
 - (void)didDragMarker:(AIRGMSMarker *)marker;
+
 @end

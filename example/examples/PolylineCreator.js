@@ -72,24 +72,26 @@ class PolylineCreator extends React.Component {
           style={styles.map}
           initialRegion={this.state.region}
           scrollEnabled={false}
-          onPanDrag={e => this.onPanDrag(e)}
+          onPress={e => this.onPanDrag(e)}
         >
           {this.state.polylines.map(polyline => (
-            <MapView.Polyline
+            <MapView.Polygon
+              editable={true}
               key={polyline.id}
               coordinates={polyline.coordinates}
-              strokeColor="#000"
-              fillColor="rgba(255,0,0,0.5)"
-              strokeWidth={1}
+              strokeColor="#FFF"
+              fillColor="rgba(255,0,0,0.0)"
+              strokeWidth={3}
             />
           ))}
           {this.state.editing &&
             <MapView.Polyline
+              editable={true}
               key="editingPolyline"
               coordinates={this.state.editing.coordinates}
-              strokeColor="#F00"
-              fillColor="rgba(255,0,0,0.5)"
-              strokeWidth={1}
+              strokeColor="#FFF"
+              fillColor="rgba(255,0,0,0.0)"
+              strokeWidth={3}
             />
           }
         </MapView>

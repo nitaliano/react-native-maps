@@ -8,6 +8,7 @@
 #import "AIRMapCoordinate.h"
 #import "AIRGoogleMapMarker.h"
 #import "AIRGoogleMapMarkerManager.h"
+#import "AIRGMSPolyline.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "RCTUtils.h"
 
@@ -16,7 +17,9 @@
 - (instancetype)init
 {
   if (self = [super init]) {
-    _polyline = [[GMSPolyline alloc] init];
+    _markers = [NSMutableArray new];
+    _polyline = [[AIRGMSPolyline alloc] init];
+    _polyline.onRemove = [self onRemove];
   }
   return self;
 }
@@ -29,9 +32,25 @@
   for(int i = 0; i < coordinates.count; i++)
   {
     [path addCoordinate:coordinates[i].coordinate];
+
+    if (_editable) {
+      AIRGoogleMapMarker *marker = [[AIRGoogleMapMarker alloc] init];
+      marker.coordinate = coordinates[i].coordinate;
+      marker.realMarker.map = _polyline.map;
+      
+      marker.onPress = ^(NSDictionary *e) {
+        if (_onVertexPress) {
+          NSMutableDictionary *updatedEvent = [e mutableCopy];
+          updatedEvent[@"vertexIndex"] = [NSNumber numberWithInt:i];
+          _onVertexPress(updatedEvent);
+        }
+      };
+      
+      [_markers addObject:marker];
+    }
   }
   
-   _polyline.path = path;
+  _polyline.path = path;
 }
 
 -(void)setStrokeColor:(UIColor *)strokeColor
@@ -68,6 +87,22 @@
 {
   _zIndex = zIndex;
   _polyline.zIndex = zIndex;
+}
+
+-(void(^)(GMSMapView *map))onRemove
+{
+  return ^(GMSMapView *map) {
+    [self clearMarkers];
+  };
+}
+
+-(void)clearMarkers
+{
+  for (int i = 0; i < _markers.count; i++) {
+    AIRGoogleMapMarker *marker = (AIRGoogleMapMarker*)[_markers objectAtIndex:i];
+    marker.realMarker.map = nil;
+  }
+  [_markers removeAllObjects];
 }
 
 @end

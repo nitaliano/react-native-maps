@@ -122,6 +122,10 @@ const propTypes = {
    * @platform ios
    */
   lineDashPattern: PropTypes.arrayOf(PropTypes.number),
+
+  editable: PropTypes.bool,
+
+  onVertexPress: PropTypes.func,
 };
 
 const defaultProps = {

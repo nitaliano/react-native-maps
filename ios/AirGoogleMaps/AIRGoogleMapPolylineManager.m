@@ -35,5 +35,8 @@ RCT_EXPORT_VIEW_PROPERTY(strokeColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(strokeWidth, double)
 RCT_EXPORT_VIEW_PROPERTY(geodesic, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(zIndex, int)
+RCT_EXPORT_VIEW_PROPERTY(editable, BOOL)
+
+RCT_EXPORT_VIEW_PROPERTY(onVertexPress, RCTBubblingEventBlock)
 
 @end

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import MapView from 'react-native-maps';
+import flagPinkImg from './assets/flag-pink.png';
 
 const { width, height } = Dimensions.get('window');
 
@@ -86,19 +87,29 @@ class PolygonCreator extends React.Component {
         >
           {this.state.polygons.map(polygon => (
             <MapView.Polygon
+              editable={true}
               key={polygon.id}
               coordinates={polygon.coordinates}
-              strokeColor="#F00"
-              fillColor="rgba(255,0,0,0.5)"
-              strokeWidth={1}
+              markerImage={flagPinkImg}
+              strokeColor="#FFF"
+              fillColor="rgba(255,0,0,0.0)"
+              strokeWidth={3}
             />
           ))}
           {this.state.editing && (
-            <MapView.Polygon
+            <MapView.Polyline
+              editable={true}
+              key="edit"
               coordinates={this.state.editing.coordinates}
-              strokeColor="#000"
-              fillColor="rgba(255,0,0,0.5)"
-              strokeWidth={1}
+              strokeColor="#FFF"
+              strokeWidth={3}
+              onVertexPress={(e) => {
+                const vertexIndex = e.nativeEvent.vertexIndex;
+
+                if (vertexIndex === 0) {
+                  this.finish();
+                }
+              }}
             />
           )}
         </MapView>

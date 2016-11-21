@@ -7,6 +7,8 @@ import decorateMapComponent, {
   SUPPORTED,
 } from './decorateMapComponent';
 
+import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
+
 const propTypes = {
   ...View.propTypes,
 
@@ -121,6 +123,16 @@ const propTypes = {
    * @platform ios
    */
   lineDashPattern: PropTypes.arrayOf(PropTypes.number),
+
+  /**
+   * Puts polygon into an edit state
+   */
+  editable: PropTypes.bool,
+
+  onVertexPress: PropTypes.func,
+  onEditStart: PropTypes.func,
+  onEditEnd: PropTypes.func,
+  markerImage: PropTypes.any,
 };
 
 const defaultProps = {
@@ -130,9 +142,15 @@ const defaultProps = {
 
 class MapPolygon extends React.Component {
   render() {
+    let markerImage;
+    if (this.props.markerImage) {
+      markerImage = resolveAssetSource(this.props.markerImage) || {};
+      markerImage = markerImage.uri;
+    }
+
     const AIRMapPolygon = this.getAirComponent();
     return (
-      <AIRMapPolygon {...this.props} />
+      <AIRMapPolygon {...this.props} markerImage={markerImage} />
     );
   }
 }
