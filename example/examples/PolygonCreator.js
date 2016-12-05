@@ -90,7 +90,6 @@ class PolygonCreator extends React.Component {
               editable={true}
               key={polygon.id}
               coordinates={polygon.coordinates}
-              markerImage={flagPinkImg}
               strokeColor="#FFF"
               fillColor="rgba(255,0,0,0.0)"
               strokeWidth={3}

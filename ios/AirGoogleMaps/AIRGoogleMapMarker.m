@@ -166,7 +166,7 @@ CGRect unionRect(CGRect a, CGRect b) {
   return _realMarker.identifier;
 }
 
-- (void)setOnPress:(RCTBubblingEventBlock)onPress {
+- (void)setOnPress:(RCTBubblingEventBlock)onPress {  
   _realMarker.onPress = onPress;
 }
 
