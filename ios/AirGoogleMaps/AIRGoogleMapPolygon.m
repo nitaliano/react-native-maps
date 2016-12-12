@@ -54,7 +54,7 @@
       marker.onPress = ^(NSDictionary *e) {
         if (_onVertexPress) {
           NSMutableDictionary *updatedEvent = [e mutableCopy];
-          updatedEvent[@"vertexIndex"] = [NSNumber numberWithInt:i];
+          updatedEvent[@"vertexPosition"] = [NSNumber numberWithInt:i];
           _onVertexPress(updatedEvent);
         }
       };
@@ -70,13 +70,17 @@
       
       marker.onDragStart = ^(NSDictionary *e) {
         if (_onEditStart) {
-          _onEditStart(e);
+          NSMutableDictionary *mutableEvt = [e mutableCopy];
+          mutableEvt[@"vertexPosition"] = [NSNumber numberWithInt:i];
+          _onEditStart(mutableEvt);
         }
       };
       
       marker.onDragEnd = ^(NSDictionary *e) {
         if (_onEditEnd) {
-          _onEditEnd(e);
+          NSMutableDictionary *mutableEvt = [e mutableCopy];
+          mutableEvt[@"vertexPosition"] = [NSNumber numberWithInt:i];
+          _onEditEnd(mutableEvt);
         }
       };
       
