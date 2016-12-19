@@ -9,6 +9,7 @@ import {
 
 import MapView from 'react-native-maps';
 import flagPinkImg from './assets/flag-pink.png';
+import flagBlueImg from './assets/flag-blue.png';
 
 const { width, height } = Dimensions.get('window');
 
@@ -32,6 +33,7 @@ class PolygonCreator extends React.Component {
       },
       polygons: [],
       editing: null,
+      lastEdit: Date.now(),
     };
   }
 
@@ -85,15 +87,26 @@ class PolygonCreator extends React.Component {
           onPress={e => this.onPress(e)}
           {...mapOptions}
         >
-          {this.state.polygons.map(polygon => (
+          {this.state.polygons.map((polygon, index) => (
             <MapView.Polygon
               editable={true}
-              key={polygon.id}
+              key={this.state.lastEdit}
               coordinates={polygon.coordinates}
               markerImage={flagPinkImg}
+              midpointMarkerImage={flagBlueImg}
               strokeColor="#FFF"
               fillColor="rgba(255,0,0,0.0)"
               strokeWidth={3}
+              onEditEnd={(e) => {
+                var polygons = this.state.polygons.slice(0);
+                polygon.coordinates = e.nativeEvent.coordinates;
+                polygons[index] = polygon;
+
+                this.setState({
+                  lastEdit: Date.now(),
+                  polygons: polygons,
+                });
+              }}
             />
           ))}
           {this.state.editing && (

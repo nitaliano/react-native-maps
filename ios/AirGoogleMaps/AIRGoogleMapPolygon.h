@@ -14,12 +14,14 @@
 @property (nonatomic, weak) RCTBridge *bridge;
 @property (nonatomic, strong) AIRGMSPolygon *polygon;
 @property (nonatomic, strong) NSMutableArray<AIRGoogleMapMarker *> *markers;
+@property (nonatomic, strong) NSMutableArray<AIRGoogleMapMarker *> *midpointMarkers;
 @property (nonatomic, strong) NSArray<AIRMapCoordinate *> *coordinates;
 
 @property (nonatomic, copy) RCTBubblingEventBlock onVertexPress;
 @property (nonatomic, copy) RCTDirectEventBlock onEditStart;
 @property (nonatomic, copy) RCTDirectEventBlock onEditEnd;
 @property (nonatomic, copy) NSString *markerImage;
+@property (nonatomic, copy) NSString *midpointMarkerImage;
 
 @property (nonatomic, assign) UIColor *fillColor;
 @property (nonatomic, assign) double strokeWidth;

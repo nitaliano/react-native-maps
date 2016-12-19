@@ -133,6 +133,7 @@ const propTypes = {
   onEditStart: PropTypes.func,
   onEditEnd: PropTypes.func,
   markerImage: PropTypes.any,
+  midpointMarkerImage: PropTypes.any,
 };
 
 const defaultProps = {
@@ -141,16 +142,28 @@ const defaultProps = {
 };
 
 class MapPolygon extends React.Component {
+  getImageResource(assetSource) {
+    const image = resolveAssetSource(assetSource) || {};
+    return image.uri;
+  }
+
   render() {
     let markerImage;
     if (this.props.markerImage) {
-      markerImage = resolveAssetSource(this.props.markerImage) || {};
-      markerImage = markerImage.uri;
+      markerImage = this.getImageResource(this.props.markerImage);
+    }
+
+    let midpointMarkerImage;
+    if (this.props.midpointMarkerImage) {
+      midpointMarkerImage = this.getImageResource(this.props.midpointMarkerImage);
     }
 
     const AIRMapPolygon = this.getAirComponent();
     return (
-      <AIRMapPolygon {...this.props} markerImage={markerImage} />
+      <AIRMapPolygon
+        {...this.props}
+        markerImage={markerImage}
+        midpointMarkerImage={midpointMarkerImage} />
     );
   }
 }
