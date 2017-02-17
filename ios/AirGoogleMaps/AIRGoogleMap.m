@@ -66,27 +66,24 @@ id regionAsJSON(MKCoordinateRegion region) {
            };
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
-- (void)insertReactSubview:(id<RCTComponent>)subview atIndex:(NSInteger)atIndex {
-  // Our desired API is to pass up markers/overlays as children to the mapview component.
-  // This is where we intercept them and do the appropriate underlying mapview action.
+- (void) addToMap:(id<RCTComponent>)subview
+{
   if ([subview isKindOfClass:[AIRGoogleMapMarker class]]) {
     AIRGoogleMapMarker *marker = (AIRGoogleMapMarker*)subview;
     marker.realMarker.map = self;
-    [self.markers addObject:marker];
+    [_markers addObject:marker];
   } else if ([subview isKindOfClass:[AIRGoogleMapPolygon class]]) {
     AIRGoogleMapPolygon *polygon = (AIRGoogleMapPolygon*)subview;
     polygon.polygon.map = self;
-    [self.polygons addObject:polygon];
+    [_polygons addObject:polygon];
   } else if ([subview isKindOfClass:[AIRGoogleMapPolyline class]]) {
     AIRGoogleMapPolyline *polyline = (AIRGoogleMapPolyline*)subview;
     polyline.polyline.map = self;
-    [self.polylines addObject:polyline];
+    [_polylines addObject:polyline];
   } else if ([subview isKindOfClass:[AIRGoogleMapCircle class]]) {
     AIRGoogleMapCircle *circle = (AIRGoogleMapCircle*)subview;
     circle.circle.map = self;
-    [self.circles addObject:circle];
+    [_circles addObject:circle];
   } else if ([subview isKindOfClass:[AIRGoogleMapUrlTile class]]) {
     AIRGoogleMapUrlTile *tile = (AIRGoogleMapUrlTile*)subview;
     tile.tileLayer.map = self;
@@ -94,19 +91,13 @@ id regionAsJSON(MKCoordinateRegion region) {
   } else {
     NSArray<id<RCTComponent>> *childSubviews = [subview reactSubviews];
     for (int i = 0; i < childSubviews.count; i++) {
-      [self insertReactSubview:(UIView *)childSubviews[i] atIndex:atIndex];
+      [self addToMap:childSubviews[i]];
     }
   }
-  [_reactSubviews insertObject:(UIView *)subview atIndex:(NSUInteger) atIndex];
 }
-#pragma clang diagnostic pop
 
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
-- (void)removeReactSubview:(id<RCTComponent>)subview {
-  // similarly, when the children are being removed we have to do the appropriate
-  // underlying mapview action here.
+- (void) removeFromMap:(id<RCTComponent>)subview
+{
   if ([subview isKindOfClass:[AIRGoogleMapMarker class]]) {
     AIRGoogleMapMarker *marker = (AIRGoogleMapMarker*)subview;
     marker.realMarker.map = nil;
@@ -130,9 +121,28 @@ id regionAsJSON(MKCoordinateRegion region) {
   } else {
     NSArray<id<RCTComponent>> *childSubviews = [subview reactSubviews];
     for (int i = 0; i < childSubviews.count; i++) {
-      [self removeReactSubview:(UIView *)childSubviews[i]];
+      [self removeFromMap:childSubviews[i]];
     }
   }
+}
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
+- (void)insertReactSubview:(id<RCTComponent>)subview atIndex:(NSInteger)atIndex {
+  // Our desired API is to pass up markers/overlays as children to the mapview component.
+  // This is where we intercept them and do the appropriate underlying mapview action.
+  [self addToMap:subview];
+  [_reactSubviews insertObject:(UIView *)subview atIndex:(NSUInteger) atIndex];
+}
+#pragma clang diagnostic pop
+
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
+- (void)removeReactSubview:(id<RCTComponent>)subview {
+  // similarly, when the children are being removed we have to do the appropriate
+  // underlying mapview action here.
+  [self removeFromMap:subview];
   [_reactSubviews removeObject:(UIView *)subview];
 }
 #pragma clang diagnostic pop
