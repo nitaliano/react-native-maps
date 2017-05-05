@@ -36,6 +36,7 @@ CGRect unionRect(CGRect a, CGRect b) {
   if ((self = [super init])) {
     _realMarker = [[AIRGMSMarker alloc] init];
     _realMarker.fakeMarker = self;
+    _realMarker.tracksViewChanges = NO;
   }
   return self;
 }
@@ -150,7 +151,9 @@ CGRect unionRect(CGRect a, CGRect b) {
 }
 
 - (void)setCoordinate:(CLLocationCoordinate2D)coordinate {
+  _realMarker.tracksViewChanges = YES;
   _realMarker.position = coordinate;
+  _realMarker.tracksViewChanges = NO;
 }
 
 - (CLLocationCoordinate2D)coordinate {
