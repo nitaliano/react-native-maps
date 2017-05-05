@@ -11,5 +11,6 @@
 @property (nonatomic, strong) GMSURLTileLayer *tileLayer;
 @property (nonatomic, assign) NSString *urlTemplate;
 @property (nonatomic, assign) int zIndex;
+@property (nonatomic, strong) NSArray *subdomains;
 
 @end

@@ -47,7 +47,8 @@ class CustomTiles extends React.Component {
           initialRegion={region}
         >
           <MapView.UrlTile
-            urlTemplate="http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
+            urlTemplate="http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
+            subdomains={['a', 'b', 'c']}
             zIndex={-1}
           />
         </MapView>

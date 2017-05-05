@@ -5,7 +5,9 @@
 
 #import "AIRGoogleMapUrlTile.h"
 
+
 @implementation AIRGoogleMapUrlTile
+
 
 - (void)setZIndex:(int)zIndex
 {
@@ -24,11 +26,33 @@
   NSString *urlTemplate = self.urlTemplate;
   GMSTileURLConstructor urls = ^(NSUInteger x, NSUInteger y, NSUInteger zoom) {
     NSString *url = urlTemplate;
+
+    // subdomains
+    if ([self _hasSubdomains]) {
+      CGPoint coord = CGPointMake(x, y);
+      url = [url stringByReplacingOccurrencesOfString:@"{s}" withString:[NSString stringWithFormat: @"%@", [self _getSubdomain:coord]]];
+    }
+
+    // xyz
+    long invertedY = pow(2, zoom) - y - 1;
     url = [url stringByReplacingOccurrencesOfString:@"{x}" withString:[NSString stringWithFormat: @"%ld", (long)x]];
-    url = [url stringByReplacingOccurrencesOfString:@"{y}" withString:[NSString stringWithFormat: @"%ld", (long)y]];
+    url = [url stringByReplacingOccurrencesOfString:@"{y}" withString:[NSString stringWithFormat: @"%ld", (long)invertedY]];
     url = [url stringByReplacingOccurrencesOfString:@"{z}" withString:[NSString stringWithFormat: @"%ld", (long)zoom]];
+
     return [NSURL URLWithString:url];
   };
   return urls;
 }
+
+- (BOOL)_hasSubdomains
+{
+  return !(_subdomains == nil || _subdomains.count == 0);
+}
+
+- (NSString*)_getSubdomain:(CGPoint)point
+{
+  int subdomainIndex = (int)ABS(point.x + point.y) % _subdomains.count;
+  return _subdomains[subdomainIndex];
+}
+
 @end
