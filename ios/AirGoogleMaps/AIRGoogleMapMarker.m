@@ -36,6 +36,7 @@ CGRect unionRect(CGRect a, CGRect b) {
   if ((self = [super init])) {
     _realMarker = [[AIRGMSMarker alloc] init];
     _realMarker.fakeMarker = self;
+    _realMarker.tracksViewChanges = NO;
   }
   return self;
 }
@@ -191,14 +192,14 @@ CGRect unionRect(CGRect a, CGRect b) {
     if (_iconImageView) [_iconImageView removeFromSuperview];
     return;
   }
-  
+
   if (!_iconImageView) {
     // prevent glitch with marker (cf. https://github.com/airbnb/react-native-maps/issues/738)
     UIImageView *empyImageView = [[UIImageView alloc] init];
     _iconImageView = empyImageView;
     [self iconViewInsertSubview:_iconImageView atIndex:0];
   }
-  
+
   _reloadImageCancellationBlock = [_bridge.imageLoader loadImageWithURLRequest:[RCTConvert NSURLRequest:_imageSrc]
                                                                           size:self.bounds.size
                                                                          scale:RCTScreenScale()
